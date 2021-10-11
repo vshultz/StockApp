@@ -2,18 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <%@page import="java.util.ArrayList" %>
 <%@page import ="com.stocks.domain.Price"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %>
 <% String name = (String)request.getAttribute("companyName"); %>
+<% ArrayList<Map<String, Integer>> dates = (ArrayList<Map<String, Integer>>) request.getAttribute("dateList"); %>
+<% List<Price> data = (List<Price>) request.getAttribute("priceList"); %>
 <head>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
     <script type="text/javascript">
+        var dataPoints1 = [], dataPoints2 = [], dataPoints3 = []
+        function createDataPoints() {
+            <% for (int i = 0; i < data.size(); i++) { %>
+                <% Price price = (Price) data.get(i) %>
+                var date = <%=price.getDateSymbol().getDate() %>
+                var open = <%=price.getOpen() %>
+                var close = <%=price.getClose() %>
+                var open = <%=price.getOpen() %>
+                var high = <%=price.getHigh() %>
+                var open = <%=price.getOpen() %>
+            <%}%>
+        }
+        createDataPoints()
         window.onload = function () {
             var dataPoints1 = [], dataPoints2 = [], dataPoints3 = [];
             var stockChart = new CanvasJS.StockChart("chartContainer",{
                 exportEnabled: true,
                 theme: "light2",
                 title:{
-                    text:"<%=name%>>"
+                    text:"<%=name%>"
                 },
                 charts: [{
                     toolTip: {
@@ -81,8 +98,8 @@
                         dataPoints: dataPoints3
                     }],
                     slider: {
-                        minimum: new Date(2018, 06, 01),
-                        maximum: new Date(2018, 08, 01)
+                        minimum: new Date(<%=dates.get(0).get("year")%>, <%=dates.get(0).get("month")%>, <%=dates.get(0).get("day")%>),
+                        maximum: new Date(<%=dates.get(1).get("year")%>, <%=dates.get(1).get("month")%>, <%=dates.get(1).get("day")%>)
         }
         }
         });
