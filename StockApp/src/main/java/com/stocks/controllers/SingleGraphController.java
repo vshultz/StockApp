@@ -25,7 +25,9 @@ public class SingleGraphController {
     public String getCompanyInfo(@RequestParam String symbol, Model model) {
         try {
             model.addAttribute("companyName", attributeRepository.findName(symbol));
-            model.addAttribute("priceList", priceRepository.findPriceList(symbol));
+            List<Price> priceList = priceRepository.findPriceList(symbol);
+            model.addAttribute("priceList", priceList);
+            model.addAttribute("dateList", priceRepository.getBoundaryDates(symbol, priceList));
             return "responses/singleGraph";
         } catch (IndexOutOfBoundsException i) {
             return "responses/error";

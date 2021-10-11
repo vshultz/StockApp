@@ -6,7 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class AttributeRepository implements CompanyRepository {
@@ -21,5 +23,9 @@ public class AttributeRepository implements CompanyRepository {
     }
 
     @Override
-    public List<Price> findPriceList(String symbol) {return null;}
+    public List<Price> findPriceList(String symbol) { return null; }
+
+    @Override
+    public ArrayList<Map<String, Integer>> getBoundaryDates(String symbol, List<Price> priceList) { return null; }
+
 }
