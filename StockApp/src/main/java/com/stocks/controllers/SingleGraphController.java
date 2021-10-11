@@ -1,7 +1,7 @@
 package com.stocks.controllers;
 
 import com.stocks.dao.CompanyRepository;
-import com.stocks.domain.Price;
+import com.stocks.domain.Stock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,20 +17,20 @@ public class SingleGraphController {
     @Autowired
     CompanyRepository attributeRepository;
 
-    @Qualifier("priceRepository")
+    @Qualifier("stockRepository")
     @Autowired
-    CompanyRepository priceRepository;
+    CompanyRepository stockRepository;
 
     @PostMapping("/home")
     public String getCompanyInfo(@RequestParam String symbol, Model model) {
         try {
             model.addAttribute("companyName", attributeRepository.findName(symbol));
-            List<Price> priceList = priceRepository.findPriceList(symbol);
-            model.addAttribute("priceList", priceList);
-            model.addAttribute("dateList", priceRepository.getBoundaryDates(symbol, priceList));
-            return "responses/singleGraph";
+            List<Stock> stockList = stockRepository.findPriceList(symbol);
+            model.addAttribute("priceList", stockList);
+            model.addAttribute("dateList", stockRepository.getBoundaryDates(symbol, stockList));
+            return "singleGraph";
         } catch (IndexOutOfBoundsException i) {
-            return "responses/error";
+            return "error";
         }
     }
 

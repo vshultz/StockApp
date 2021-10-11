@@ -1,7 +1,7 @@
 package com.stocks.dao;
 
 import com.stocks.domain.Attribute;
-import com.stocks.domain.Price;
+import com.stocks.domain.Stock;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -23,9 +23,9 @@ public class AttributeRepository implements CompanyRepository {
     }
 
     @Override
-    public List<Price> findPriceList(String symbol) { return null; }
+    public List<Stock> findPriceList(String symbol) { return null; }
 
     @Override
-    public ArrayList<Map<String, Integer>> getBoundaryDates(String symbol, List<Price> priceList) { return null; }
+    public ArrayList<Map<String, Integer>> getBoundaryDates(String symbol, List<Stock> stockList) { return null; }
 
 }
