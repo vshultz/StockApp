@@ -12,9 +12,7 @@ import java.util.*;
 public class PriceRepository implements CompanyRepository {
     @PersistenceContext EntityManager entityManager;
 
-    SimpleDateFormat year = new SimpleDateFormat("yyyy");
-    SimpleDateFormat month = new SimpleDateFormat("mm");
-    SimpleDateFormat day = new SimpleDateFormat("dd");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
 
     @Override
     public String findName(String symbol) {return null;}
@@ -35,9 +33,16 @@ public class PriceRepository implements CompanyRepository {
         while(idx < priceList.size()) {
             Map<String, Integer> dateMap = new HashMap<String, Integer>();
             Date date = priceList.get(idx).getDateSymbol().getDate();
-            dateMap.put("year", Integer.parseInt(year.format(date)));
-            dateMap.put("month", Integer.parseInt(month.format(date)));
-            dateMap.put("day", Integer.parseInt(month.format(date)));
+            int fullDate = Integer.parseInt(dateFormat.format(date));
+            System.out.println("fullDate: " + fullDate);
+            int year = (int) ((fullDate / 10000));
+            int monthDate = fullDate - (year * 10000);
+            System.out.println("monthDate: " + monthDate);
+            int month = monthDate / 100;
+            int day = monthDate - (month * 100);
+            dateMap.put("year", year);
+            dateMap.put("month", month);
+            dateMap.put("day", day);
             dateList.add(dateMap);
             idx += priceList.size() - 1;
         }
