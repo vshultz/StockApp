@@ -5,8 +5,25 @@
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
 <script type="text/javascript" th:inline="javascript">
 /*<![CDATA[*/
+var dataPoints1 = [], dataPoints2 = [], dataPoints3 = [];
+function createDataPoints() {
+    var data = [[${stockList}]]
+    for(var i = 0; i < data.length; i++){
+        var year = [[${stockList.get(i).getYear()}]]
+        var month = [[${stockList.get(i).getMonth()}]]
+        var day = [[${stockList.get(i).getDay()}]]
+        var open = [[${priceList.get(i).getOpen()}]]
+        var close = [[${priceList.get(i).getClose()}]]
+        var high = [[${priceList.get(i).getHigh()}]]
+        var low = [[${priceList.get(i).getLow()}]]
+        var volume = [[${priceList.get(i).getVolume()}]]
+        dataPoints1.push({x: new Date(year, month - 1, day), y: [Number(open), Number(high), Number(low), Number(close)], color: open < close ? "green" : "red"});;
+        dataPoints2.push({x: new Date(year, month - 1, day), y: Number(volume), color: open < close ? "green" : "red"});
+        dataPoints3.push({x: new Date(year, month - 1, day), y: Number(close)});
+    }
+}
+createDataPoints();
 window.onload = function () {
-  var dataPoints1 = [], dataPoints2 = [], dataPoints3 = [];
   var stockChart = new CanvasJS.StockChart("chartContainer",{
     exportEnabled: true,
     theme: "light2",
@@ -32,11 +49,10 @@ window.onload = function () {
         }
       },
       axisY2: {
-        title: "Stock Price",
         prefix: "$"
       },
       legend: {
-        verticalAlign: "top",
+        verticalAlign: "left",
         horizontalAlign: "left"
       },
       data: [{
@@ -79,19 +95,12 @@ window.onload = function () {
         dataPoints: dataPoints3
       }],
       slider: {
-        minimum: new Date(/*[[${dateList.get(0).get("year")}]]*/ 2013, /*[[${dateList.get(0).get("month")}]]*/ 11, /*[[${dateList.get(0).get("day")}]]*/ 22),
-        maximum: new Date(/*[[${dateList.get(1).get("year")}]]*/ 2018, /*[[${dateList.get(1).get("month")}]]*/ 12, /*[[${dateList.get(1).get("day")}]]*/ 31)
+        minimum: new Date(/*[[${dateList.get(0).get("year")}]]*/ 2013, /*[[${dateList.get(0).get("month") - 1}]]*/ 11, /*[[${dateList.get(0).get("day")}]]*/ 22),
+        maximum: new Date(/*[[${dateList.get(1).get("year")}]]*/ 2018, /*[[${dateList.get(1).get("month") - 1}]]*/ 12, /*[[${dateList.get(1).get("day")}]]*/ 31)
       }
     }
   });
-    $.getJSON("https://canvasjs.com/data/docs/ltceur2018.json", function(data) {
-        for(var i = 0; i < data.length; i++){
-            dataPoints1.push({x: new Date(data[i].date), y: [Number(data[i].open), Number(data[i].high), Number(data[i].low), Number(data[i].close)], color: data[i].open < data[i].close ? "green" : "red"});;
-            dataPoints2.push({x: new Date(data[i].date), y: Number(data[i].volume_eur), color: data[i].open < data[i].close ? "green" : "red"});
-            dataPoints3.push({x: new Date(data[i].date), y: Number(data[i].close)});
-        }
         stockChart.render();
-  });
 }
 /*]]>*/
 </script>
