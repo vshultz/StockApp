@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class SingleGraphController {
@@ -25,7 +28,9 @@ public class SingleGraphController {
     public String getCompanyInfo(@RequestParam String symbol, Model model) {
         try {
             model.addAttribute("companyName", attributeRepository.findName(symbol));
-            model.addAttribute("priceList", priceRepository.findPriceList(symbol));
+            List<Price> priceList = priceRepository.findPriceList(symbol);
+            model.addAttribute("priceList", priceList);
+            model.addAttribute("dateList", priceRepository.getBoundaryDates(symbol, priceList));
             return "responses/singleGraph";
         } catch (IndexOutOfBoundsException i) {
             return "responses/error";
