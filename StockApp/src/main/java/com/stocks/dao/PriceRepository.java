@@ -42,6 +42,8 @@ public class PriceRepository implements CompanyRepository {
             idx += priceList.size() - 1;
         }
         System.out.println(dateList.get(0).get("year") + " " + dateList.get(1).get("year"));
+        System.out.println(dateList.get(0).get("month") + " " + dateList.get(1).get("month"));
+        System.out.println(dateList.get(0).get("day") + " " + dateList.get(1).get("day"));
         return dateList;
     }
 }
