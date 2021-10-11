@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
+<script type="text/javascript" th:inline="javascript">
+/*<![CDATA[*/
+var dataPoints1 = [], dataPoints2 = [], dataPoints3 = [];
+function createDataPoints() {
+    var data = [[${stockList}]]
+    for(var i = 0; i < data.length; i++){
+        var year = [[${stockList.get(i).getYear()}]]
+        var month = [[${stockList.get(i).getMonth()}]]
+        var day = [[${stockList.get(i).getDay()}]]
+        var open = [[${priceList.get(i).getOpen()}]]
+        var close = [[${priceList.get(i).getClose()}]]
+        var high = [[${priceList.get(i).getHigh()}]]
+        var low = [[${priceList.get(i).getLow()}]]
+        var volume = [[${priceList.get(i).getVolume()}]]
+        dataPoints1.push({x: new Date(year, month - 1, day), y: [Number(open), Number(high), Number(low), Number(close)], color: open < close ? "green" : "red"});;
+        dataPoints2.push({x: new Date(year, month - 1, day), y: Number(volume), color: open < close ? "green" : "red"});
+        dataPoints3.push({x: new Date(year, month - 1, day), y: Number(close)});
+    }
+}
+createDataPoints();
+window.onload = function () {
+  var stockChart = new CanvasJS.StockChart("chartContainer",{
+    exportEnabled: true,
+    theme: "light2",
+    title:{
+      text:/*[[${companyName}]]*/ 'default'
+    },
+    charts: [{
+      toolTip: {
+        shared: true
+      },
+      axisX: {
+        lineThickness: 5,
+        tickLength: 0,
+        labelFormatter: function(e) {
+          return "";
+        },
+        crosshair: {
+          enabled: true,
+          snapToDataPoint: true,
+          labelFormatter: function(e) {
+            return ""
+          }
+        }
+      },
+      axisY2: {
+        prefix: "$"
+      },
+      legend: {
+        verticalAlign: "left",
+        horizontalAlign: "left"
+      },
+      data: [{
+        name: "Price (in USD)",
+        yValueFormatString: "$#,###.##",
+        axisYType: "secondary",
+        type: "candlestick",
+        risingColor: "green",
+        fallingColor: "red",
+        dataPoints : dataPoints1
+      }]
+    },{
+      height: 100,
+      toolTip: {
+        shared: true
+      },
+      axisX: {
+        crosshair: {
+          enabled: true,
+          snapToDataPoint: true
+        }
+      },
+      axisY2: {
+        prefix: "$",
+        title: "USD"
+      },
+      legend: {
+        horizontalAlign: "left"
+      },
+      data: [{
+        yValueFormatString: "$#,###.##",
+        axisYType: "secondary",
+        name: "USD",
+        dataPoints : dataPoints2
+      }]
+    }],
+    navigator: {
+      data: [{
+        color: "grey",
+        dataPoints: dataPoints3
+      }],
+      slider: {
+        minimum: new Date(/*[[${dateList.get(0).get("year")}]]*/ 2013, /*[[${dateList.get(0).get("month") - 1}]]*/ 11, /*[[${dateList.get(0).get("day")}]]*/ 22),
+        maximum: new Date(/*[[${dateList.get(1).get("year")}]]*/ 2018, /*[[${dateList.get(1).get("month") - 1}]]*/ 12, /*[[${dateList.get(1).get("day")}]]*/ 31)
+      }
+    }
+  });
+        stockChart.render();
+}
+/*]]>*/
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 400px; max-width: 920px; margin: 0px auto;"></div>
+</body>
+</html>
