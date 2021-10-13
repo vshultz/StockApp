@@ -30,6 +30,7 @@ public class CompanyStockServiceImpl implements CompanyStockService {
 
     @Override
     public List<Stock> findPriceList(String symbol) {
+
         return stockRepository.findPriceList(symbol);
     }
 

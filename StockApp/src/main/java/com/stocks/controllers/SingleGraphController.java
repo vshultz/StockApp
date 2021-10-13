@@ -1,5 +1,6 @@
 package com.stocks.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stocks.domain.Stock;
 import com.stocks.services.CompanyStockService;
 import org.springframework.beans.factory.annotation.Autowired;
