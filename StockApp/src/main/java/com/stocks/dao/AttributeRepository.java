@@ -15,17 +15,12 @@ public class AttributeRepository implements CompanyRepository {
     @PersistenceContext EntityManager entityManager;
 
     @Override
-    public String findName(String symbol) {
-        List<Attribute> attributeList = entityManager.createQuery("SELECT a FROM Attribute a WHERE a.symbol = :symbol")
+    public List<Attribute> findAttribute(String symbol) {
+        return entityManager.createQuery("SELECT a FROM Attribute a WHERE a.symbol = :symbol")
                 .setParameter("symbol", symbol)
                 .getResultList();
-        return attributeList.get(0).getCompanyName();
     }
 
     @Override
     public List<Stock> findPriceList(String symbol) { return null; }
-
-    @Override
-    public ArrayList<Map<String, Integer>> getBoundaryDates(String symbol, List<Stock> stockList) { return null; }
-
 }

@@ -4,13 +4,49 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css" href="stylesheets/index.css">
+    #ui{
+        background-color: #8085E9;
+        padding: 30px;
+        margin-top: 10%;
+        border-radius: 10px;
+    }
+    #ui label {
+        color: #FFF;
+    }
+</style>
 <body>
 <h1>Well, hello there!</h1>
-<form action="/home" method="post">
-        <label>
-            <input type="text" name="symbol" placeholder="Enter symbol here" maxlength="10" required="required" />
-        </label>
-        <button type="submit" >Generate </button>
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div id="ui">
+                <form class="form-group text-center" action="/home" method="post">
+                    <div class="row text-center">
+                        <label>Stock Symbol:</label>
+                        <br>
+                        <input type="text" name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
+                    </div>
+                    <br>
+                    <select class="form-control">
+                        <option>Choose chart type...</option>
+                        <option name="chartType" value="candlestickAndVolume">Candlestick and Volume</option>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Generate </button>
+<!--                    <input type="submit" name="submit" value="submit" class="btn btn-primary btn-block btn-lg">-->
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+<footer>
+    <a href='https://www.freepik.com/photos/tea'>Tea photo created by azerbaijan_stockers - www.freepik.com</a>
+</footer>
 </body>
 </html>
