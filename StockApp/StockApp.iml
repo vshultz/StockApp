@@ -5,6 +5,7 @@
       <configuration>
         <webroots>
           <root url="file://$MODULE_DIR$/lib" relative="/" />
+          <root url="file://$MODULE_DIR$" relative="/.." />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
@@ -40,12 +41,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="exporting" level="application" />
-    <orderEntry type="library" name="highcharts" level="application" />
     <orderEntry type="library" name="data" level="application" />
     <orderEntry type="library" name="highstock" level="application" />
-    <orderEntry type="library" name="export-data" level="application" />
-    <orderEntry type="library" name="bootstrap" level="application" />
-    <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="drag-panes" level="application" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:2.5.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.5.5" level="project" />
@@ -149,5 +146,12 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.8.2" level="project" />
     <orderEntry type="library" name="Maven: javax.json:javax.json-api:1.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish:javax.json:1.1" level="project" />
+    <orderEntry type="library" name="exporting" level="application" />
+    <orderEntry type="library" name="highstock" level="application" />
+    <orderEntry type="library" name="data" level="application" />
+    <orderEntry type="library" name="drag-panes" level="application" />
+    <orderEntry type="library" name="highcharts" level="application" />
+    <orderEntry type="library" name="export-data" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>

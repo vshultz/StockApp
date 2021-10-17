@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/StockApp" libraries="{bootstrap, data, drag-panes, export-data, exporting, highcharts, highstock, jquery}" />
+    <file url="file://$PROJECT_DIR$/StockApp" libraries="{data, drag-panes, exporting, highstock}" />
+    <file url="file://$PROJECT_DIR$/StockApp/src/main/resources/templates/responses/candlestockAndVolume.html" libraries="{export-data, highcharts, jquery}" />
   </component>
 </project>
