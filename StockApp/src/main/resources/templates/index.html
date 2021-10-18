@@ -4,13 +4,60 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style type="text/css" href="stylesheets/index.css">
+    body {
+        background-image: url(mesmerizing-shot-skyscrapers-city-covered-mist-night.jpg);
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed; /** won't move with use **/
+        background-
+    }
+    #ui{
+        background-color: #404048;
+        padding: 30px;
+        margin-top: 10%;
+        border-radius: 10px;
+        opacity: 0.85;
+    }
+    #ui label, h1 {
+        color: #FFF;
+    }
+    #symbol {
+        border-radius: 5px;
+    }
+    #button, .form-control {
+        background-color: #9E9E9E;
+    }
+</style>
 <body>
-<h1>Well, hello there!</h1>
-<form action="/home" method="post">
-        <label>
-            <input type="text" name="symbol" placeholder="Enter symbol here" maxlength="10" required="required" />
-        </label>
-        <button type="submit" >Generate </button>
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div id="ui">
+                <h1 class="lrg-title">Dynamic Stock Charts</h1>
+                <form class="form-group" action="/home" method="post">
+                    <label>Stock Symbol:</label>
+                    <br>
+                    <input type="text" id="symbol"  name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
+                    <br><br>
+                    <select class="form-control btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        <option name="chartType" value="candlestickAndVolume">Candlestick and Volume</option>
+                        <option name="chartType" value="smaAndVolume">Simple Moving Average and Volume</option>
+                    </select>
+                    <br><br>
+                    <button type="submit" id="button" class="btn btn-primary btn-block btn-lg">Generate </button>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+<footer class="text-right">
+    <a class="text-small" href='https://www.freepik.com/photos/business'>Business photo created by wirestock - www.freepik.com</a>
+</footer>
 </body>
 </html>
