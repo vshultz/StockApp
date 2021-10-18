@@ -1,63 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"><head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/css/index.css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" href="/static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style type="text/css" href="stylesheets/index.css">
-    body {
-        background-image: url(mesmerizing-shot-skyscrapers-city-covered-mist-night.jpg);
-        background-size: cover;
-        background-position: center center;
-        background-attachment: fixed; /** won't move with use **/
-        background-
-    }
-    #ui{
-        background-color: #404048;
-        padding: 30px;
-        margin-top: 10%;
-        border-radius: 10px;
-        opacity: 0.85;
-    }
-    #ui label, h1 {
-        color: #FFF;
-    }
-    #symbol {
-        border-radius: 5px;
-    }
-    #button, .form-control {
-        background-color: #9E9E9E;
-    }
-</style>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
-            <div id="ui">
-                <h1 class="lrg-title">Dynamic Stock Charts</h1>
-                <form class="form-group" action="/home" method="post">
-                    <label>Stock Symbol:</label>
-                    <br>
-                    <input type="text" id="symbol"  name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
-                    <br><br>
-                    <select class="form-control btn btn-primary dropdown-toggle" data-toggle="dropdown" placeholder="Choose chart type...">
-                        <option name="chartType" value="candlestickAndVolume">Candlestick and Volume</option>
-                        <option name="chartType" value="candlestickAndVolume">Candlestick and Volume</option>
-                    </select>
-                    <br><br>
-                    <button type="submit" id="button" class="btn btn-primary btn-block btn-lg">Generate </button>
-                </form>
-            </div>
+<header>
+    <nav>
+        <ul class="nav nav-pills bg-light">
+            <li class="nav-item">
+                <a class="nav-link active" href="/templates/index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="templates/smaVolume.html">Simple Moving Average</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="smaVolume.html">Simple Moving Average</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main role="main">
+    <div class="jumbotron jumbotron-detail-stocks" >
+        <div class="container">
+            <h1 class="display-10 text-white">Historical Stock Data</h1>
+            <p class="lead">Interactive historical graphs for S&amp;P 500 companies from 2013 to 2018</p>
         </div>
-        <div class="col-lg-3"></div>
     </div>
-</div>
-<footer class="text-right">
-    <a class="text-small" href='https://www.freepik.com/photos/business'>Business photo created by wirestock - www.freepik.com</a>
-</footer>
-</body>
-</html>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div id="ui">
+                    <h1 class="lrg-title">Dynamic Stock Charts</h1>
+                    <form class="form-group" action="/home" method="post">
+                        <label>Stock Symbol:</label>
+                        <br>
+                        <input type="text" id="symbol" name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
+                        <button type="submit" id="button" class="btn btn-primary btn-block btn-lg btn-light">Generate </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+    <footer class="text-right">
+        <a class="text-small" href="https://www.freepik.com/photos/business">Business photo created by wirestock - www.freepik.com</a>
+    </footer>
+</main>
+</body></html>

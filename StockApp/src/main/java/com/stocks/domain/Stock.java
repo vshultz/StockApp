@@ -1,12 +1,13 @@
 package com.stocks.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity(name = "Stock")
 @Table(name = "stock")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Stock {

@@ -1,0 +1,27 @@
+body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-image: url(mesmerizing-shot-skyscrapers-city-covered-mist-night.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /** won't move with use **/
+}
+.jumbotron {
+    background-color: #404048;
+}
+#ui{
+    background-color: #404048;
+    padding: 30px;
+    margin-top: 10%;
+    border-radius: 10px;
+    opacity: 0.85;
+}
+#ui label, h1 {
+    color: #FFF;
+}
+#symbol {
+    border-radius: 5px;
+}
+.form-control {
+    background-color: #9E9E9E;
+}

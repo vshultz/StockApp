@@ -1,12 +1,13 @@
 package com.stocks.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity(name = "Attribute")
 @Table(name = "attribute")
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Attribute {
@@ -20,7 +21,4 @@ public class Attribute {
 
     @Column(name = "sector", updatable = false)
     private String sector;
-
-    /** no-arg constructor **/
-    public Attribute() {}
 }
