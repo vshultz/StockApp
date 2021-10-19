@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha512-DUC8yqWf7ez3JD1jszxCWSVB0DMP78eOyBpMa5aJki1bIRARykviOuImIczkxlj1KhVSyS16w2FSQetkD4UU2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/nunito-font.css" th:href="@{/css/nunito-font.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script th:href="@{/js/script.js}"></script>
+    <title>Home</title>
+</head>
+<body>
+<nav class="nav">
+    <div class="container">
+        <div class="logo">
+            <a th:href="@{index}">Interactive Stock Graphs</a>
+        </div>
+        <div id="mainListDiv" class="main_list">
+            <ul class="navlinks">
+                <li><a th:href="@{index}">Home</a></li>
+                <li><a th:href="@{sma}">Simple Moving Average</a></li>
+                <li><a th:href="@{GUI}">Technical Indicator GUI</a></li>
+                <li><a th:href="@{lookup}">Symbol Lookup</a></li>
+            </ul>
+        </div>
+        <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+    </div>
+</nav>
+<section class="home">
+</section>
+<div style="height: 1000px">
+    <!-- just to make scrolling effect possible -->
+    <body class="form-v9">
+    <div class="page-content">
+        <div class="form-v9-content">
+            <form class="form-detail">
+                <h2 th:text="'${companySymbol}"></h2>
+            </form>
+        </div>
+    </div>
+    <footer class="text-right">
+        <a class="text-small" href="https://www.freepik.com/photos/business">Business photo created by wirestock - www.freepik.com</a>
+    </footer>
+    </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</div>
+
+<!-- Function used to shrink nav bar removing paddings and adding black background -->
+<script>
+    $(window).scroll(function() {
+        if ($(document).scrollTop() > 50) {
+            $('.nav').addClass('affix');
+            console.log("OK");
+        } else {
+            $('.nav').removeClass('affix');
+        }
+    });
+</script>
+</body>
+</html>
