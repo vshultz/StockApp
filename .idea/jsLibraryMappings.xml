@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/StockApp" libraries="{data, drag-panes, exporting, highstock}" />
-    <file url="file://$PROJECT_DIR$/StockApp/src/main/resources/templates/responses/candlestickVolume.html" libraries="{export-data, highcharts, jquery}" />
+    <file url="file://$PROJECT_DIR$/StockApp" libraries="{Node.js Core, annotations-advanced, bollinger-bands, data, drag-panes, ema, exporting, full-screen, gui, heikinashi, highstock, hollowcandlestick, indicators, indicators-all, jquery-3.2.1.slim, popper.js, popup, price-indicator, stock-tools, volume-by-price}" />
+    <file url="file://$PROJECT_DIR$/StockApp/src/main/resources/templates/responses/candlestickVolumeOutput.html" libraries="{export-data, highcharts, jquery}" />
   </component>
 </project>

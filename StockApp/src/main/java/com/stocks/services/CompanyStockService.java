@@ -9,7 +9,7 @@ import java.util.Map;
 
 public interface CompanyStockService {
     String findName(String symbol);
+    String findSymbol(String name);
     List<Stock> findPriceList(String symbol);
-    ArrayList<Map<String, Integer>> getBoundaryDates(String symbol, List<Stock> stockList);
-    String writeJSONData(List<Stock> stockList, String title) throws FileNotFoundException;
+    String writeJSONData(String title, String symbol) throws FileNotFoundException;
 }
