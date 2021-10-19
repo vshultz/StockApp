@@ -1,11 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
 
 body {
-    background-image: url(mesmerizing-shot-skyscrapers-city-covered-mist-night.jpg);
+    background-color: #000000;
     background-size: cover;
     background-position: center center;
     background-attachment: fixed; /** won't move with use **/
 }
+
+/* unvisited link */
+a:link {
+    color: #FFF;
+}
+
+/* visited link */
+a:visited {
+    color: #FFF;
+}
+
+/* selected link */
+a:active {
+    color: yellow;
+}
+
 /* navbar css */
 html,
 body {
@@ -85,7 +101,7 @@ body {
 .home {
     width: 100%;
     height: 100vh;
-    background-image: url(https://images.unsplash.com/photo-1498550744921-75f79806b8a7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b0f6908fa5e81286213c7211276e6b3d&auto=format&fit=crop&w=1500&q=80);
+    background-image: url(mesmerizing-shot-skyscrapers-city-covered-mist-night.jpg);
     background-position: center top;
     background-size:cover;
 }
@@ -356,8 +372,8 @@ body {
 }
 /* form css */
 .page-content {
-    width: 100%;
-    margin:  0 auto;
+    width: 80%;
+    margin:  5% auto;
     background: #404048;
     opacity: 0.8;
     border-radius: 20px;

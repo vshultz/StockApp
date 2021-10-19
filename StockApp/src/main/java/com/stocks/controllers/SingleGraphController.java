@@ -47,4 +47,7 @@ public class SingleGraphController {
     public String lookup(){
         return "lookup";
     }
+
+    @GetMapping("/acknowledgements")
+    public String acknowledge(){ return "acknowledgements"; }
 }

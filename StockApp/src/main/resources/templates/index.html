@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="/static/css/nunito-font.css" th:href="@{/css/nunito-font.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/mouse.css}">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script th:href="@{/js/script.js}"></script>
@@ -20,10 +21,11 @@
         </div>
         <div id="mainListDiv" class="main_list">
             <ul class="navlinks">
-                <li><a th:href="@{index}">Home</a></li>
+                <li><a class="active" th:href="@{index}">Home</a></li>
                 <li><a th:href="@{sma}">Simple Moving Average</a></li>
                 <li><a th:href="@{GUI}">Technical Indicator GUI</a></li>
                 <li><a th:href="@{lookup}">Symbol Lookup</a></li>
+                <li><a th:href="@{acknowledgements}">Acknowledgments</a></li>
             </ul>
         </div>
         <span class="navTrigger">
@@ -34,6 +36,13 @@
     </div>
 </nav>
 <section class="home">
+    <!-- mouse-box is used only for centering mouse-icon -->
+    <div class="mouse-box">
+        <div class="mouse-icon">
+            <div class="scrolling-wheel">
+            </div>
+        </div>
+    </div>
 </section>
 <div style="height: 1000px">
     <!-- just to make scrolling effect possible -->
@@ -53,9 +62,6 @@
                 </form>
             </div>
         </div>
-    <footer class="text-right">
-        <a class="text-small" href="https://www.freepik.com/photos/business">Business photo created by wirestock - www.freepik.com</a>
-    </footer>
     </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </div>
 
