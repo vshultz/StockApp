@@ -6,19 +6,23 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class AttributeRepository implements CompanyRepository {
     @PersistenceContext EntityManager entityManager;
 
     @Override
-    public List<Attribute> findAttribute(String symbol) {
+    public List<Attribute> findName(String symbol) {
         return entityManager.createQuery("SELECT a FROM Attribute a WHERE a.symbol = :symbol")
                 .setParameter("symbol", symbol)
+                .getResultList();
+    }
+
+    @Override
+    public List<Attribute> findSymbol(String name) {
+        return entityManager.createQuery("SELECT a FROM Attribute a WHERE LOWER( a.companyName) LIKE :name")
+                .setParameter("name", name)
                 .getResultList();
     }
 

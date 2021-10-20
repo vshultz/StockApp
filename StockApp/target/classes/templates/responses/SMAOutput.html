@@ -1,0 +1,173 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SMA</title>
+</head>
+<body>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+<script src="https://code.highcharts.com/stock/modules/drag-panes.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+<script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+<script type="text/javascript" src="sand-signika.src.js"></script>
+
+<div id="container" style="height: 500px; min-width: 310px"></div>
+<script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+    function getSymbol() {
+        return [[${companySymbol}]];
+    }
+
+    function getName() {
+        return [[${companyName}]];
+    }
+    function getFileLocation() {
+        return [[${jsonfile}]];
+    }
+
+    Highcharts.getJSON(getFileLocation(), function (data) {
+        // split the data set into ohlc and volume
+
+        var ohlc = [],
+            volume = [],
+            dataLength = data.data.length,
+            // set the allowed units for data grouping
+            groupingUnits = [[
+                'week',                         // unit name
+                [1]                             // allowed multiples
+            ], [
+                'month',
+                [1, 2, 3, 4, 6]
+            ]],
+            i = 0;
+        for (i; i < dataLength; i += 1) {
+            ohlc.push([
+                Date.UTC(data.data[i][0], data.data[i][1], data.data[i][2]), // the date
+                data.data[i][3], // open
+                data.data[i][4], // high
+                data.data[i][5], // low
+                data.data[i][6] // close
+            ]);
+            volume.push([
+                Date.UTC(data.data[i][0], data.data[i][1], data.data[i][2]), // the date
+                data.data[i][7] // the volume
+            ]);
+        }
+
+        // create the chart
+        Highcharts.stockChart('container', {
+
+            rangeSelector: {
+                selected: 1,
+                buttons: [{
+                    type: 'month',
+                    count: 1,
+                    text: '1m'
+                }, {
+                    type: 'month',
+                    count: 3,
+                    text: '3m'
+                }, {
+                    type: 'month',
+                    count: 6,
+                    text: '6m'
+                }, {
+                    type: 'year',
+                    count: 1,
+                    text: '1y'
+                }, {
+                    type: 'all',
+                    text: 'All'
+                }]
+            },
+
+            title: {
+                text: getName()
+            },
+
+            subtitle: {
+                text: 'With SMA and Volume by Price technical indicators'
+            },
+
+            yAxis: [{
+                startOnTick: false,
+                endOnTick: false,
+                labels: {
+                    align: 'right',
+                    x: -3
+                },
+                title: {
+                    text: 'OHLC'
+                },
+                height: '60%',
+                lineWidth: 2,
+                resize: {
+                    enabled: true
+                }
+            }, {
+                labels: {
+                    align: 'right',
+                    x: -3
+                },
+                title: {
+                    text: 'Volume'
+                },
+                top: '65%',
+                height: '35%',
+                offset: 0,
+                lineWidth: 2
+            }],
+
+            tooltip: {
+                split: false
+            },
+
+            plotOptions: {
+                series: {
+                    dataGrouping: {
+                        units: groupingUnits
+                    }
+                }
+            },
+
+            series: [{
+                type: 'candlestick',
+                name: getSymbol(),
+                id: getSymbol(),
+                zIndex: 2,
+                data: ohlc
+            }, {
+                type: 'column',
+                name: 'Volume',
+                id: 'volume',
+                data: volume,
+                yAxis: 1
+            }, {
+                type: 'vbp',
+                linkedTo: getSymbol(),
+                params: {
+                    volumeSeriesID: 'volume'
+                },
+                dataLabels: {
+                    enabled: true
+                },
+                zoneLines: {
+                    enabled: true
+                }
+            }, {
+                type: 'sma',
+                linkedTo: getSymbol(),
+                zIndex: 1,
+                marker: {
+                    enabled: false
+                }
+            }]
+        });
+    });
+    /*]]>*/
+</script>
+</body>
+</html>

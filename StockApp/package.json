@@ -1,0 +1,10 @@
+{
+  "name": "StockApp",
+  "version": "1.0.0",
+  "dependencies": {
+    "del": "^6.0.0"
+  },
+  "devDependencies": {
+    "gulp-rename": "^2.0.0"
+  }
+}

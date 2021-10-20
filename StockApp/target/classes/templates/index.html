@@ -1,63 +1,85 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha512-DUC8yqWf7ez3JD1jszxCWSVB0DMP78eOyBpMa5aJki1bIRARykviOuImIczkxlj1KhVSyS16w2FSQetkD4UU2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/nunito-font.css" th:href="@{/css/nunito-font.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/mouse.css}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <title>Home</title>
 </head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<style type="text/css" href="stylesheets/index.css">
-    body {
-        background-image: url(mesmerizing-shot-skyscrapers-city-covered-mist-night.jpg);
-        background-size: cover;
-        background-position: center center;
-        background-attachment: fixed; /** won't move with use **/
-        background-
-    }
-    #ui{
-        background-color: #404048;
-        padding: 30px;
-        margin-top: 10%;
-        border-radius: 10px;
-        opacity: 0.85;
-    }
-    #ui label, h1 {
-        color: #FFF;
-    }
-    #symbol {
-        border-radius: 5px;
-    }
-    #button, .form-control {
-        background-color: #9E9E9E;
-    }
-</style>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
-            <div id="ui">
-                <h1 class="lrg-title">Dynamic Stock Charts</h1>
-                <form class="form-group" action="/home" method="post">
-                    <label>Stock Symbol:</label>
-                    <br>
-                    <input type="text" id="symbol"  name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
-                    <br><br>
-                    <select class="form-control btn btn-primary dropdown-toggle" data-toggle="dropdown" placeholder="Choose chart type...">
-                        <option name="chartType" value="candlestickAndVolume">Candlestick and Volume</option>
-                        <option name="chartType" value="candlestickAndVolume">Candlestick and Volume</option>
-                    </select>
-                    <br><br>
-                    <button type="submit" id="button" class="btn btn-primary btn-block btn-lg">Generate </button>
+<nav class="nav">
+    <div class="container">
+        <div class="logo">
+            <a th:href="@{index}">Interactive Stock Graphs</a>
+        </div>
+        <div id="mainListDiv" class="main_list">
+            <ul class="navlinks">
+                <li><a class="active" th:href="@{index}">Home</a></li>
+                <li><a th:href="@{sma}">Simple Moving Average</a></li>
+                <li><a th:href="@{GUI}">Technical Indicator GUI</a></li>
+                <li><a th:href="@{lookup}">Symbol Lookup</a></li>
+                <li><a th:href="@{acknowledgements}">Acknowledgments</a></li>
+            </ul>
+        </div>
+        <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+    </div>
+</nav>
+<section class="home">
+    <!-- mouse-box is used only for centering mouse-icon -->
+    <div class="mouse-box">
+        <div class="mouse-icon">
+            <div class="scrolling-wheel">
+            </div>
+        </div>
+    </div>
+</section>
+<div style="height: 1000px">
+    <!-- just to make scrolling effect possible -->
+    <body class="form-v9">
+        <div class="page-content">
+            <div class="form-v9-content">
+                <form class="form-detail" th:action="@{home}" method="post">
+                    <h2>Daily Prices and Volume</h2>
+                    <div class="form-row-total">
+                        <div class="form-row">
+                            <input type="text" class="input-text" id="symbol" name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
+                        </div>
+                    </div>
+                    <div class="form-row-last">
+                        <input type="submit" name="generate" class="generate" value="Generate">
+                    </div>
                 </form>
             </div>
         </div>
-        <div class="col-lg-3"></div>
-    </div>
+    </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </div>
-<footer class="text-right">
-    <a class="text-small" href='https://www.freepik.com/photos/business'>Business photo created by wirestock - www.freepik.com</a>
-</footer>
+
+<!-- Function used to shrink nav bar removing paddings and adding black background -->
+<script>
+    $(window).scroll(function() {
+        if ($(document).scrollTop() > 50) {
+            $('.nav').addClass('affix');
+            console.log("OK");
+        } else {
+            $('.nav').removeClass('affix');
+        }
+    });
+
+    $('.navTrigger').click(function () {
+        $(this).toggleClass('active');
+        console.log("Clicked menu");
+        $("#mainListDiv").toggleClass("show_list").fadeIn();
+    });
+</script>
 </body>
 </html>

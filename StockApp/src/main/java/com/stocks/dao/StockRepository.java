@@ -13,7 +13,10 @@ public class StockRepository implements CompanyRepository {
     @PersistenceContext EntityManager entityManager;
 
     @Override
-    public List<Attribute> findAttribute(String symbol) {return null;}
+    public List<Attribute> findName(String symbol) {return null;}
+
+    @Override
+    public List<Attribute> findSymbol(String name) { return null; }
 
     @Override
     public List<Stock> findPriceList(String symbol) {
