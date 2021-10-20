@@ -1,24 +1,5 @@
 package com.stocks.stockapp;
 
-import com.stocks.dao.AttributeRepository;
-import com.stocks.domain.Attribute;
-import com.stocks.services.CompanyStockService;
-import com.stocks.services.CompanyStockServiceImpl;
-import org.assertj.core.api.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.persistence.EntityManager;
-import java.util.List;
-
-
 public class AttributeTest {
 //    private AttributeRepository attributeRepository;
 //    private CompanyStockServiceImpl service;
