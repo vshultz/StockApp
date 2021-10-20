@@ -14,13 +14,13 @@ public class SMAController {
     @Autowired
     CompanyStockService companyStockService;
 
-    @PostMapping("/smaController")
+    @PostMapping("/emaController")
     public String getCompanyInfo(@RequestParam String symbol, Model model) {
         try {
             model.addAttribute("companySymbol", symbol);
             model.addAttribute("companyName", companyStockService.findName(symbol));
             model.addAttribute("jsonfile", companyStockService.writeJSONData("singleGraph", symbol));
-            return "responses/SMAOutput";
+            return "responses/EMAOutput";
         } catch (IndexOutOfBoundsException | FileNotFoundException i) {
             return "error";
         }
