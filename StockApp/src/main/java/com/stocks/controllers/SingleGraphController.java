@@ -33,9 +33,9 @@ public class SingleGraphController {
     @GetMapping("/index")
     public String home() { return "index"; }
 
-    @GetMapping("/sma")
+    @GetMapping("/ema")
     public String smaVolume() {
-        return "SMA";
+        return "EMA";
     }
 
     @GetMapping("/GUI")
