@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        function getSymbol() {
+            return [[${companySymbol}]];
+        }
+
+        function getName() {
+            return [[${companyName}]];
+        }
+
+        function getFileLocation() {
+            return [[${jsonfile}]];
+        }
+        window.onload = function () {
+            var dps1 = [], dps2= [];
+            var stockChart = new CanvasJS.StockChart("chartContainer",{
+                rangeSelector: {
+                    selectedRangeButtonIndex: 1
+                },
+                theme: "light2",
+                title:{
+                    text: getName()
+                },
+                subtitles: [{
+                    text: "Exponential Moving Average"
+                }],
+                charts: [{
+                    axisY: {
+                        prefix: "$"
+                    },
+                    toolTip: {
+                        shared: false
+                    },
+                    legend: {
+                        cursor: "pointer",
+                        verticalAlign: "top",
+                        itemclick: function (e) {
+                            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                                e.dataSeries.visible = false;
+                            } else {
+                                e.dataSeries.visible = true;
+                            }
+                            e.chart.render();
+                        }
+                    },
+                    data: [{
+                        type: "candlestick",
+                        name: "Stock Price",
+                        showInLegend: true,
+                        yValueFormatString: "$#,###.##",
+                        xValueType: "dateTime",
+                        dataPoints : dps1
+                    }],
+                }],
+                navigator: {
+                    animationEnabled: true,
+                    data: [{
+                        dataPoints: dps2
+                    }]
+                }
+            });
+            $.getJSON(getFileLocation(), function(data) {
+                for(var i = 0; i < data.data.length; i++){
+                    var date = new Date(data.data[i][0], data.data[i][1], data.data[i][2]);
+                        var open = data.data[i][3];
+                        var high = data.data[i][4];
+                        var low = data.data[i][5];
+                       var close = data.data[i][6];
+
+
+                    dps1.push({x: new Date(date), y: [Number(open), Number(high), Number(low), Number(close)]});
+                    dps2.push({x: new Date(date), y: Number(close)});
+                }
+                stockChart.render();
+                var ema = calculateEMA(dps1, 7);
+                stockChart.charts[0].addTo("data", {type: "line", name: "EMA", showInLegend: true, yValueFormatString: "$#,###.##", dataPoints: ema});
+            });
+            function calculateEMA(dps,count) {
+                var k = 2/(count + 1);
+                var emaDps = [{x: dps[0].x, y: dps[0].y.length ? dps[0].y[3] : dps[0].y}];
+                for (var i = 1; i < dps.length; i++) {
+                    emaDps.push({x: dps[i].x, y: (dps[i].y.length ? dps[i].y[3] : dps[i].y) * k + emaDps[i - 1].y * (1 - k)});
+                }
+                return emaDps;
+            }
+        }
+        /*]]>*/
+    </script>
+</head>
+<body>
+<div id="chartContainer" style="height: 450px; width: 100%;"></div>
+</body>
+</html>
