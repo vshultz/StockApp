@@ -170,5 +170,7 @@
     <orderEntry type="library" name="hollowcandlestick" level="application" />
     <orderEntry type="library" name="bollinger-bands" level="application" />
     <orderEntry type="library" name="ema" level="application" />
+    <orderEntry type="library" name="pivot-points" level="application" />
+    <orderEntry type="library" name="macd" level="application" />
   </component>
 </module>

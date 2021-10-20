@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha512-DUC8yqWf7ez3JD1jszxCWSVB0DMP78eOyBpMa5aJki1bIRARykviOuImIczkxlj1KhVSyS16w2FSQetkD4UU2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
@@ -9,8 +9,6 @@
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/mouse.css}">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script th:href="@{/js/script.js}"></script>
     <title>SMA</title>
 </head>
 <body>
@@ -48,23 +46,20 @@
     <!-- just to make scrolling effect possible -->
     <body class="form-v9">
     <div class="page-content">
-        <div class="form-v9-content">
-            <form class="form-detail" action="/smaController" method="post">
-                <h2>Simple Moving Average and Volume</h2>
-                <div class="form-row-total">
-                    <div class="form-row">
-                        <input type="text" class="input-text" id="symbol" name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
+            <div class="form-v9-content">
+                <form class="form-detail" th:action="@{smaController}" method="post">
+                    <h2>Simple Moving Average and Volume</h2>
+                    <div class="form-row-total">
+                        <div class="form-row">
+                            <input type="text" class="input-text" id="symbol" name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
+                        </div>
                     </div>
-                </div>
-                <div class="form-row-last">
-                    <input type="submit" name="generate" class="generate" value="Generate">
-                </div>
-            </form>
+                    <div class="form-row-last">
+                        <input type="submit" name="generate" class="generate" value="Generate">
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <footer class="text-right">
-        <a class="text-small" href="https://www.freepik.com/photos/business">Business photo created by wirestock - www.freepik.com</a>
-    </footer>
     </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </div>
 
@@ -77,6 +72,12 @@
         } else {
             $('.nav').removeClass('affix');
         }
+    });
+
+    $('.navTrigger').click(function () {
+        $(this).toggleClass('active');
+        console.log("Clicked menu");
+        $("#mainListDiv").toggleClass("show_list").fadeIn();
     });
 </script>
 </body>

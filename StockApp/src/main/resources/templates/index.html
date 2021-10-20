@@ -9,8 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/mouse.css}">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script th:href="@{/js/script.js}"></script>
+
     <title>Home</title>
 </head>
 <body>
@@ -74,6 +73,12 @@
         } else {
             $('.nav').removeClass('affix');
         }
+    });
+
+    $('.navTrigger').click(function () {
+        $(this).toggleClass('active');
+        console.log("Clicked menu");
+        $("#mainListDiv").toggleClass("show_list").fadeIn();
     });
 </script>
 </body>

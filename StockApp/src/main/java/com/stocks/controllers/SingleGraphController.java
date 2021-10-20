@@ -35,11 +35,11 @@ public class SingleGraphController {
 
     @GetMapping("/sma")
     public String smaVolume() {
-        return "smaVolume";
+        return "SMA";
     }
 
     @GetMapping("/GUI")
-    public String comparison(){
+    public String gui(){
         return "GUI";
     }
 

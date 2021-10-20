@@ -1,6 +1,5 @@
 package com.stocks.controllers;
 
-import com.stocks.domain.Stock;
 import com.stocks.services.CompanyStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.FileNotFoundException;
-import java.util.List;
 
 @Controller
 public class SMAController {
@@ -22,7 +20,7 @@ public class SMAController {
             model.addAttribute("companySymbol", symbol);
             model.addAttribute("companyName", companyStockService.findName(symbol));
             model.addAttribute("jsonfile", companyStockService.writeJSONData("singleGraph", symbol));
-            return "responses/smaVolumeOutput";
+            return "responses/SMAOutput";
         } catch (IndexOutOfBoundsException | FileNotFoundException i) {
             return "error";
         }

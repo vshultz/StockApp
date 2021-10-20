@@ -9,9 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/index.css}">
     <link rel="stylesheet" th:href="@{/css/mouse.css}">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script th:href="@{/js/script.js}"></script>
-    <title>Home</title>
+    <title>Found Symbol</title>
 </head>
 <body>
 <nav class="nav">
@@ -50,13 +48,10 @@
     <div class="page-content">
         <div class="form-v9-content">
             <form class="form-detail">
-                <h2 th:text="'${companySymbol}"></h2>
+                <h2 th:text="${companySymbol}"></h2>
             </form>
         </div>
     </div>
-    <footer class="text-right">
-        <a class="text-small" href="https://www.freepik.com/photos/business">Business photo created by wirestock - www.freepik.com</a>
-    </footer>
     </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </div>
 
@@ -69,6 +64,12 @@
         } else {
             $('.nav').removeClass('affix');
         }
+    });
+
+    $('.navTrigger').click(function () {
+        $(this).toggleClass('active');
+        console.log("Clicked menu");
+        $("#mainListDiv").toggleClass("show_list").fadeIn();
     });
 </script>
 </body>

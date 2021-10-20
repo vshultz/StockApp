@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha512-DUC8yqWf7ez3JD1jszxCWSVB0DMP78eOyBpMa5aJki1bIRARykviOuImIczkxlj1KhVSyS16w2FSQetkD4UU2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <meta charset="UTF-8">
@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="/static/css/nunito-font.css" th:href="@{/css/nunito-font.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/mouse.css}">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script th:href="@{/js/script.js}"></script>
-    <title>SMA</title>
+    <title>Home</title>
 </head>
 <body>
 <nav class="nav">
@@ -23,6 +24,7 @@
                 <li><a th:href="@{index}">Home</a></li>
                 <li><a th:href="@{sma}">Simple Moving Average</a></li>
                 <li><a th:href="@{GUI}">Technical Indicator GUI</a></li>
+                <li><a th:href="@{comparison}">Company Comparisons</a></li>
                 <li><a th:href="@{lookup}">Symbol Lookup</a></li>
                 <li><a th:href="@{acknowledgements}">Acknowledgments</a></li>
             </ul>
@@ -35,22 +37,21 @@
     </div>
 </nav>
 <section class="home">
+    <!-- mouse-box is used only for centering mouse-icon -->
+    <div class="mouse-box">
+        <div class="mouse-icon">
+            <div class="scrolling-wheel">
+            </div>
+        </div>
+    </div>
 </section>
 <div style="height: 1000px">
     <!-- just to make scrolling effect possible -->
     <body class="form-v9">
     <div class="page-content">
         <div class="form-v9-content">
-            <form class="form-detail" action="/smaController" method="post">
-                <h2>Simple Moving Average and Volume</h2>
-                <div class="form-row-total">
-                    <div class="form-row">
-                        <input type="text" class="input-text" id="symbol" name="symbol" placeholder="Enter symbol here" maxlength="10" required="required">
-                    </div>
-                </div>
-                <div class="form-row-last">
-                    <input type="submit" name="generate" class="generate" value="Generate">
-                </div>
+            <form class="form-detail">
+                <h2 th:text="${companySymbol}"></h2>
             </form>
         </div>
     </div>

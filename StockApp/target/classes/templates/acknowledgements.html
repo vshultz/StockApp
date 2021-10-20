@@ -7,10 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="stylesheet" type="text/css" href="/static/css/nunito-font.css" th:href="@{/css/nunito-font.css}">
   <link rel="stylesheet" th:href="@{/css/index.css}">
+  <link rel="stylesheet" th:href="@{/css/mouse.css}">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script th:href="@{/js/script.js}"></script>
-  <title>Home</title>
+  <title>Acknowledgments</title>
 </head>
 <body>
 <nav class="nav">
@@ -35,6 +34,13 @@
   </div>
 </nav>
 <section class="home">
+  <!-- mouse-box is used only for centering mouse-icon -->
+  <div class="mouse-box">
+    <div class="mouse-icon">
+      <div class="scrolling-wheel">
+      </div>
+    </div>
+  </div>
 </section>
 <div style="height: 1000px">
   <!-- just to make scrolling effect possible -->
@@ -50,7 +56,7 @@
         </div>
         <div class="form-row-total">
           <div class="form-row">
-            <h3>Dr. Taeghyun Kang (TK) for introducing me to Spring Boot framework and Javascript capabilities.</h3>
+            <h3>Dr. Taeghyun Kang (TK) for introducing me to Spring Boot framework and helping me debug Javascript Charting library implementation..</h3>
           </div>
         </div>
         <div class="form-row-total">
@@ -60,7 +66,7 @@
         </div>
         <div class="form-row-total">
           <div class="form-row">
-            <h3><a href="https://www.highcharts.com">Highcharts for their stellar charting library</a> and great customer service!</h3>
+            <h3><a href="https://www.highcharts.com">Highcharts for their stellar charting library</a> and great customer service! Special shoutout to <a href="https://www.highcharts.com/blog/author/mustapha/">Mustapha Mekhatria</a> who designed the Simple Moving Average template.</h3>
           </div>
         </div>
         <div class="form-row-total">
@@ -70,7 +76,12 @@
         </div>
         <div class="form-row-total">
           <div class="form-row">
-            <h3><a href="https://colorlib.com/wp/template/colorlib-regform-35/">colorlib</a> for their form template.</h3>
+            <h3><a href="https://colorlib.com/wp/template/colorlib-regform-35/">colorlib</a> for their modern form template.</h3>
+          </div>
+        </div>
+        <div class="form-row-total">
+          <div class="form-row">
+            <ah3>Last, but not least, I want to thank all of the <a href="https://stackoverflow.com">Stack Overflow</a> members whose contributions provided solutions and research ideas to my bugs and the bugs of those before me.</h3>
           </div>
         </div>
         <div class="form-row-last">
@@ -81,9 +92,6 @@
       </form>
     </div>
   </div>
-  <footer class="text-right">
-
-  </footer>
   </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </div>
 
@@ -96,6 +104,12 @@
     } else {
       $('.nav').removeClass('affix');
     }
+  });
+
+  $('.navTrigger').click(function () {
+    $(this).toggleClass('active');
+    console.log("Clicked menu");
+    $("#mainListDiv").toggleClass("show_list").fadeIn();
   });
 </script>
 </body>

@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="/static/css/nunito-font.css" th:href="@{/css/nunito-font.css}">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/mouse.css}">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script th:href="@{/js/script.js}"></script>
-    <title>Home</title>
+    <title>Error</title>
 </head>
 <body>
 <nav class="nav">
@@ -35,17 +34,25 @@
     </div>
 </nav>
 <section class="home">
+    <!-- mouse-box is used only for centering mouse-icon -->
+    <div class="mouse-box">
+        <div class="mouse-icon">
+            <div class="scrolling-wheel">
+            </div>
+        </div>
+    </div>
 </section>
 <div style="height: 1000px">
     <!-- just to make scrolling effect possible -->
     <body class="form-v9">
     <div class="page-content">
-        <h1 class="text-warning" >Invalid entry.</h1>
-        <h1 class="text-info"><a th:href="@{lookup}">Need to look up a symbol?</a></h1>
+        <div class="form-v9-content">
+            <form class="form-detail" th:action="@{GUIController}" method="post">
+                <h1 class="text-warning" >Invalid entry.</h1>
+                <h1 class="text-info"><a th:href="@{lookup}">Need to look up a symbol?</a></h1>
+            </form>
+        </div>
     </div>
-    <footer class="text-right">
-        <a class="text-small" href="https://www.freepik.com/photos/business">Business photo created by wirestock - www.freepik.com</a>
-    </footer>
     </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </div>
 
@@ -58,6 +65,12 @@
         } else {
             $('.nav').removeClass('affix');
         }
+    });
+
+    $('.navTrigger').click(function () {
+        $(this).toggleClass('active');
+        console.log("Clicked menu");
+        $("#mainListDiv").toggleClass("show_list").fadeIn();
     });
 </script>
 </body>
