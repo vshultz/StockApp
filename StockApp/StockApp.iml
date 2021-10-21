@@ -26,7 +26,7 @@
       <configuration />
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_17">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
@@ -46,6 +46,25 @@
     <orderEntry type="library" name="export-data" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="drag-panes" level="application" />
+    <orderEntry type="library" name="jquery-3.2.1.slim" level="application" />
+    <orderEntry type="library" name="popper.js" level="application" />
+    <orderEntry type="library" name="indicators" level="application" />
+    <orderEntry type="library" name="volume-by-price" level="application" />
+    <orderEntry type="library" name="gui" level="application" />
+    <orderEntry type="library" name="popup" level="application" />
+    <orderEntry type="library" name="indicators-all" level="application" />
+    <orderEntry type="library" name="annotations-advanced" level="application" />
+    <orderEntry type="library" name="price-indicator" level="application" />
+    <orderEntry type="library" name="full-screen" level="application" />
+    <orderEntry type="library" name="stock-tools" level="application" />
+    <orderEntry type="library" name="heikinashi" level="application" />
+    <orderEntry type="library" name="hollowcandlestick" level="application" />
+    <orderEntry type="library" name="bollinger-bands" level="application" />
+    <orderEntry type="library" name="ema" level="application" />
+    <orderEntry type="library" name="pivot-points" level="application" />
+    <orderEntry type="library" name="macd" level="application" />
+    <orderEntry type="library" name="canvasjs.stock" level="application" />
+    <orderEntry type="library" name="jquery-1.11.1" level="application" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-actuator:2.5.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.5.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.5.5" level="project" />
@@ -155,24 +174,7 @@
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.12.5" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.12.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
-    <orderEntry type="library" name="jquery-3.2.1.slim" level="application" />
-    <orderEntry type="library" name="popper.js" level="application" />
-    <orderEntry type="library" name="indicators" level="application" />
-    <orderEntry type="library" name="volume-by-price" level="application" />
-    <orderEntry type="library" name="gui" level="application" />
-    <orderEntry type="library" name="popup" level="application" />
-    <orderEntry type="library" name="indicators-all" level="application" />
-    <orderEntry type="library" name="annotations-advanced" level="application" />
-    <orderEntry type="library" name="price-indicator" level="application" />
-    <orderEntry type="library" name="full-screen" level="application" />
-    <orderEntry type="library" name="stock-tools" level="application" />
-    <orderEntry type="library" name="heikinashi" level="application" />
-    <orderEntry type="library" name="hollowcandlestick" level="application" />
-    <orderEntry type="library" name="bollinger-bands" level="application" />
-    <orderEntry type="library" name="ema" level="application" />
-    <orderEntry type="library" name="pivot-points" level="application" />
-    <orderEntry type="library" name="macd" level="application" />
-    <orderEntry type="library" name="canvasjs.stock" level="application" />
-    <orderEntry type="library" name="jquery-1.11.1" level="application" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:2.2" level="project" />
   </component>
 </module>

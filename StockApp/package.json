@@ -6,5 +6,8 @@
   },
   "devDependencies": {
     "gulp-rename": "^2.0.0"
+  },
+  "scripts": {
+    "install": "export ACCEPT_HIGHCHARTS_LICENSE=1"
   }
 }
