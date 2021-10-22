@@ -23,3 +23,22 @@ The front end was created with CSS Bootstrap and Javascript Charting Libraries f
 <img width="571" alt="Screen Shot 2021-10-21 at 9 48 42 AM" src="https://user-images.githubusercontent.com/77592389/138302532-60040ae5-38f8-4786-aa56-c5026c01d1de.png">
 <img width="1649" alt="Screen Shot 2021-10-21 at 9 49 08 AM" src="https://user-images.githubusercontent.com/77592389/138302614-059fc341-9c30-4a44-a593-75bc1ce04f9c.png">
 
+<img width="1508" alt="Screen Shot 2021-10-22 at 9 04 43 AM" src="https://user-images.githubusercontent.com/77592389/138467810-b721268e-8fd1-448d-882a-90a8baf95942.png">
+
+<img width="1512" alt="Screen Shot 2021-10-22 at 9 05 09 AM" src="https://user-images.githubusercontent.com/77592389/138467879-865fa62e-2f82-49ff-ac42-db230b7bb4bc.png">
+
+
+<img width="1509" alt="Screen Shot 2021-10-22 at 9 05 40 AM" src="https://user-images.githubusercontent.com/77592389/138467969-4a34ffd7-cdf6-42e0-afe5-5a28ea4e794e.png">
+<img width="1509" alt="Screen Shot 2021-10-22 at 9 11 09 AM" src="https://user-images.githubusercontent.com/77592389/138468839-14d67953-1e33-4c20-9c1f-180ebac804ce.png">
+
+<img width="1508" alt="Screen Shot 2021-10-22 at 9 11 46 AM" src="https://user-images.githubusercontent.com/77592389/138468945-1dac2073-adc1-476b-bc39-e73a4555609f.png">
+
+<img width="1510" alt="Screen Shot 2021-10-22 at 9 19 22 AM" src="https://user-images.githubusercontent.com/77592389/138470249-09f8ea10-3536-40c9-adc1-ac07f47fa46d.png">
+
+<img width="1511" alt="Screen Shot 2021-10-22 at 9 19 49 AM" src="https://user-images.githubusercontent.com/77592389/138470324-03bd4320-afb1-4a17-83a1-e13cd0455431.png">
+
+<img width="1510" alt="Screen Shot 2021-10-22 at 9 24 04 AM" src="https://user-images.githubusercontent.com/77592389/138471010-77e37b91-98c1-4702-b78f-5a7d40818250.png">
+
+<img width="1512" alt="Screen Shot 2021-10-22 at 9 26 30 AM" src="https://user-images.githubusercontent.com/77592389/138471442-24acb4f2-72b7-4091-9b43-b192123effeb.png">
+
+
