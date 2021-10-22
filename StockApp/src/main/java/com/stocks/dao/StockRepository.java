@@ -25,9 +25,4 @@ public class StockRepository implements CompanyRepository {
                 .setParameter("symbol", symbol)
                 .getResultList();
     }
-
-    @Override
-    public Object getEntityManager() {
-        return entityManager;
-    }
 }

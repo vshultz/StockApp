@@ -28,9 +28,4 @@ public class AttributeRepository implements CompanyRepository {
 
     @Override
     public List<Stock> findPriceList(String symbol) { return null; }
-
-    @Override
-    public Object getEntityManager() {
-        return entityManager;
-    }
 }

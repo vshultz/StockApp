@@ -16,8 +16,10 @@ public class LookupController {
 
     @PostMapping("/nameLookupController")
     public String getCompanyInfo(@RequestParam String name, Model model) {
-        model.addAttribute("companyName", name);
-        model.addAttribute("companySymbol", companyStockService.findSymbol(name));
+        String symbol = companyStockService.findSymbol(name);
+        model.addAttribute("companySymbol", symbol);
+        // return the full company name listed within the database
+        model.addAttribute("companyName", companyStockService.findName(symbol));
         return "responses/lookupOutput";
     }
 }

@@ -9,6 +9,4 @@ public interface CompanyRepository {
     List<Attribute> findName(String symbol);
     List<Attribute> findSymbol(String name);
     List<Stock> findPriceList(String symbol);
-
-    Object getEntityManager();
 }
