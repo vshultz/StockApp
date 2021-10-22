@@ -1,7 +1,9 @@
 package com.stocks.controllers;
 
 import com.stocks.services.CompanyStockService;
+import com.stocks.services.JsonExporter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,16 +15,17 @@ public class SingleGraphController {
     @Autowired
     CompanyStockService companyStockService;
 
+    @Autowired
+    JsonExporter jsonExporter;
+
     @PostMapping("/home")
     public String getCompanyInfo(@RequestParam String symbol, Model model) {
-        try {
-            model.addAttribute("companySymbol", symbol);
-            model.addAttribute("companyName", companyStockService.findName(symbol));
-            model.addAttribute("jsonfile", companyStockService.writeJSONData("singleGraph", symbol));
-            return "responses/candlestickVolumeOutput";
-        } catch (IndexOutOfBoundsException | FileNotFoundException i) {
-            return "error";
-        }
+        model.addAttribute("companySymbol", symbol);
+        model.addAttribute("companyName", companyStockService.findName(symbol));
+        String jsonData = jsonExporter.getJsonStock(symbol);
+        System.out.println(jsonData);
+        model.addAttribute("jsonData", jsonData);
+        return "responses/candlestickVolumeOutput";
     }
 
     @GetMapping("/")

@@ -23,13 +23,15 @@
 		return [[${companyName}]];
 	}
 
-	function getFileLocation() {
-		return [[${jsonfile}]];
+	function getData() {
+		return [[${jsonData}]];
 	}
 
-Highcharts.getJSON(getFileLocation(), function (data) {
-    // split the data set into ohlc and volume
 
+
+Highcharts.getJSON(function () {
+    // split the data set into ohlc and volume
+	let data = getData();
     var ohlc = [],
         volume = [],
         dataLength = data.data.length,
