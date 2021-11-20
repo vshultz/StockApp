@@ -30,13 +30,6 @@ public class CompanyStockServiceImpl implements CompanyStockService {
 
     @Transactional(readOnly = true)
     @Override
-    public String findName(String symbol) {
-        List<Attribute> attributeList = attributeRepository.findName(symbol);
-        return attributeList.get(0).getCompanyName();
-    }
-
-    @Transactional(readOnly = true)
-    @Override
     public String findSymbol(String name) {
         String nameReference = "%" + name.toLowerCase() + "%";
         List<Attribute> attributeList = attributeRepository.findSymbol(nameReference);

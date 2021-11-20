@@ -13,13 +13,6 @@ public class AttributeRepository implements CompanyRepository {
     @PersistenceContext EntityManager entityManager;
 
     @Override
-    public List<Attribute> findName(String symbol) {
-        return entityManager.createQuery("SELECT a FROM Attribute a WHERE a.symbol = :symbol")
-                .setParameter("symbol", symbol)
-                .getResultList();
-    }
-
-    @Override
     public List<Attribute> findSymbol(String name) {
         return entityManager.createQuery("SELECT a FROM Attribute a WHERE LOWER( a.companyName) LIKE :name")
                 .setParameter("name", name)
